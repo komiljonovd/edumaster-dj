@@ -1,0 +1,2568 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "EduMaster API",
+        "description": "Test description",
+        "termsOfService": "https://www.google.com/policies/terms/",
+        "contact": {
+            "email": "contact@snippets.local"
+        },
+        "license": {
+            "name": "BSD License"
+        },
+        "version": "v1"
+    },
+    "basePath": "/api/v1",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Basic": {
+            "type": "basic"
+        }
+    },
+    "security": [
+        {
+            "Basic": []
+        }
+    ],
+    "paths": {
+        "/assignment/": {
+            "get": {
+                "operationId": "assignment_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Assignment"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "assignment"
+                ]
+            },
+            "post": {
+                "operationId": "assignment_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Assignment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Assignment"
+                        }
+                    }
+                },
+                "tags": [
+                    "assignment"
+                ]
+            },
+            "parameters": []
+        },
+        "/assignment/student/": {
+            "get": {
+                "operationId": "assignment_student_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "assignment"
+                ]
+            },
+            "post": {
+                "operationId": "assignment_student_create",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "201": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "assignment"
+                ]
+            },
+            "parameters": []
+        },
+        "/assignment/student/{id}/": {
+            "put": {
+                "operationId": "assignment_student_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/StudentAssignment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/StudentAssignment"
+                        }
+                    }
+                },
+                "tags": [
+                    "assignment"
+                ]
+            },
+            "patch": {
+                "operationId": "assignment_student_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/StudentAssignment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/StudentAssignment"
+                        }
+                    }
+                },
+                "tags": [
+                    "assignment"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this assignmentsubmission.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/assignment/teacher/{id}/": {
+            "put": {
+                "operationId": "assignment_teacher_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TeacherAssignmentSub"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/TeacherAssignmentSub"
+                        }
+                    }
+                },
+                "tags": [
+                    "assignment"
+                ]
+            },
+            "patch": {
+                "operationId": "assignment_teacher_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TeacherAssignmentSub"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/TeacherAssignmentSub"
+                        }
+                    }
+                },
+                "tags": [
+                    "assignment"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this assignmentsubmission.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/assignment/{id}/": {
+            "get": {
+                "operationId": "assignment_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Assignment"
+                        }
+                    }
+                },
+                "tags": [
+                    "assignment"
+                ]
+            },
+            "put": {
+                "operationId": "assignment_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Assignment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Assignment"
+                        }
+                    }
+                },
+                "tags": [
+                    "assignment"
+                ]
+            },
+            "patch": {
+                "operationId": "assignment_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Assignment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Assignment"
+                        }
+                    }
+                },
+                "tags": [
+                    "assignment"
+                ]
+            },
+            "delete": {
+                "operationId": "assignment_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "assignment"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this assignment.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/auth/users/change-password/": {
+            "put": {
+                "operationId": "auth_users_change-password_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangePassword"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ChangePassword"
+                        }
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            },
+            "patch": {
+                "operationId": "auth_users_change-password_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ChangePassword"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/ChangePassword"
+                        }
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            },
+            "parameters": []
+        },
+        "/auth/users/login/": {
+            "post": {
+                "operationId": "auth_users_login_create",
+                "description": "Takes a set of user credentials and returns an access and refresh JSON web\ntoken pair to prove the authentication of those credentials.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TokenObtainPair"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/TokenObtainPair"
+                        }
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            },
+            "parameters": []
+        },
+        "/auth/users/logout/": {
+            "post": {
+                "operationId": "auth_users_logout_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Logout"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Logout"
+                        }
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            },
+            "parameters": []
+        },
+        "/auth/users/profile/me": {
+            "get": {
+                "operationId": "auth_users_profile_me_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/UserProfile"
+                        }
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            },
+            "put": {
+                "operationId": "auth_users_profile_me_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserProfile"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/UserProfile"
+                        }
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            },
+            "patch": {
+                "operationId": "auth_users_profile_me_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/UserProfile"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/UserProfile"
+                        }
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            },
+            "parameters": []
+        },
+        "/auth/users/refresh": {
+            "post": {
+                "operationId": "auth_users_refresh_create",
+                "description": "Takes a refresh type JSON web token and returns an access type JSON web\ntoken if the refresh token is valid.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TokenRefresh"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/TokenRefresh"
+                        }
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            },
+            "parameters": []
+        },
+        "/auth/users/register/": {
+            "post": {
+                "operationId": "auth_users_register_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Register"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Register"
+                        }
+                    }
+                },
+                "tags": [
+                    "auth"
+                ]
+            },
+            "parameters": []
+        },
+        "/certificate/": {
+            "get": {
+                "operationId": "certificate_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "A search term.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ordering",
+                        "in": "query",
+                        "description": "Which field to use when ordering the results.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Certificate"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "certificate"
+                ]
+            },
+            "parameters": []
+        },
+        "/certificate/{certificate_number}/": {
+            "get": {
+                "operationId": "certificate_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Certificate"
+                        }
+                    }
+                },
+                "tags": [
+                    "certificate"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "certificate_number",
+                    "in": "path",
+                    "description": "Unique certificate UUID",
+                    "required": true,
+                    "type": "string",
+                    "format": "uuid"
+                }
+            ]
+        },
+        "/course/": {
+            "get": {
+                "operationId": "course_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "A search term.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ordering",
+                        "in": "query",
+                        "description": "Which field to use when ordering the results.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Course"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "course"
+                ]
+            },
+            "post": {
+                "operationId": "course_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Course"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Course"
+                        }
+                    }
+                },
+                "tags": [
+                    "course"
+                ]
+            },
+            "parameters": []
+        },
+        "/course/{id}/": {
+            "get": {
+                "operationId": "course_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Course"
+                        }
+                    }
+                },
+                "tags": [
+                    "course"
+                ]
+            },
+            "put": {
+                "operationId": "course_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Course"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Course"
+                        }
+                    }
+                },
+                "tags": [
+                    "course"
+                ]
+            },
+            "patch": {
+                "operationId": "course_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Course"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Course"
+                        }
+                    }
+                },
+                "tags": [
+                    "course"
+                ]
+            },
+            "delete": {
+                "operationId": "course_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "course"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this course.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/lesson/": {
+            "post": {
+                "operationId": "lesson_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Lesson"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Lesson"
+                        }
+                    }
+                },
+                "tags": [
+                    "lesson"
+                ]
+            },
+            "parameters": []
+        },
+        "/lesson/{id}/": {
+            "get": {
+                "operationId": "lesson_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Lesson"
+                        }
+                    }
+                },
+                "tags": [
+                    "lesson"
+                ]
+            },
+            "put": {
+                "operationId": "lesson_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Lesson"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Lesson"
+                        }
+                    }
+                },
+                "tags": [
+                    "lesson"
+                ]
+            },
+            "patch": {
+                "operationId": "lesson_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Lesson"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Lesson"
+                        }
+                    }
+                },
+                "tags": [
+                    "lesson"
+                ]
+            },
+            "delete": {
+                "operationId": "lesson_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "lesson"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this lesson.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/parent/children-report/": {
+            "get": {
+                "operationId": "parent_children-report_list",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "parent"
+                ]
+            },
+            "parameters": []
+        },
+        "/payment/": {
+            "get": {
+                "operationId": "payment_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "A search term.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ordering",
+                        "in": "query",
+                        "description": "Which field to use when ordering the results.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Payment"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "payment"
+                ]
+            },
+            "post": {
+                "operationId": "payment_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Payment"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Payment"
+                        }
+                    }
+                },
+                "tags": [
+                    "payment"
+                ]
+            },
+            "parameters": []
+        },
+        "/payment/{id}/": {
+            "get": {
+                "operationId": "payment_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Payment"
+                        }
+                    }
+                },
+                "tags": [
+                    "payment"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this payment.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/question/": {
+            "post": {
+                "operationId": "question_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Question"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Question"
+                        }
+                    }
+                },
+                "tags": [
+                    "question"
+                ]
+            },
+            "parameters": []
+        },
+        "/question/{id}/": {
+            "get": {
+                "operationId": "question_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Question"
+                        }
+                    }
+                },
+                "tags": [
+                    "question"
+                ]
+            },
+            "put": {
+                "operationId": "question_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Question"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Question"
+                        }
+                    }
+                },
+                "tags": [
+                    "question"
+                ]
+            },
+            "patch": {
+                "operationId": "question_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Question"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Question"
+                        }
+                    }
+                },
+                "tags": [
+                    "question"
+                ]
+            },
+            "delete": {
+                "operationId": "question_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "question"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this question.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        },
+        "/quiz-test/{quiz_id}/": {
+            "get": {
+                "operationId": "quiz-test_read",
+                "summary": "Get test details",
+                "description": "Returns basic information about the test (time limit, passing score, number of attempts) before it starts.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/QuizDetail"
+                        }
+                    }
+                },
+                "tags": [
+                    "quiz-test"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "quiz_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/quiz-test/{quiz_id}/history/": {
+            "get": {
+                "operationId": "quiz-test_history_list",
+                "summary": "History of test attempts",
+                "description": "Provides a history of all attempts to pass a specific test by the currently logged in student.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/QuizAttemptResult"
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "quiz-test"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "quiz_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/quiz-test/{quiz_id}/questions/": {
+            "get": {
+                "operationId": "quiz-test_questions_list",
+                "summary": "Get a list of test questions",
+                "description": "Returns test questions without correct answers. Available only after calling the /start/ endpoint (if the timer is active).",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/QuestionStudent"
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "The test has not started or time has expired."
+                    }
+                },
+                "tags": [
+                    "quiz-test"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "quiz_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/quiz-test/{quiz_id}/start/": {
+            "post": {
+                "operationId": "quiz-test_start_create",
+                "summary": "Start the test (start the timer)",
+                "description": "Creates a test session in Redis, records the start time, and returns data for UI initialization. The timer begins counting from this point.",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "quiz_id": {
+                                    "type": "integer"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "time_limit_mins": {
+                                    "type": "integer"
+                                },
+                                "min_score": {
+                                    "type": "integer"
+                                },
+                                "max_score": {
+                                    "type": "integer"
+                                },
+                                "remaining_attempts": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Превышен лимит попыток прохождения"
+                    }
+                },
+                "tags": [
+                    "quiz-test"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "quiz_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/quiz-test/{quiz_id}/submit/": {
+            "post": {
+                "operationId": "quiz-test_submit_create",
+                "summary": "Take the test and get the results",
+                "description": "Принимает JSON с ответами студента. Высчитывает баллы, сравнивает с min_score, проверяет дедлайн по Redis и сохраняет попытку.",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/QuizSubmit"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/QuizAttemptResult"
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error, session not found or timed out"
+                    }
+                },
+                "tags": [
+                    "quiz-test"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "quiz_id",
+                    "in": "path",
+                    "required": true,
+                    "type": "string"
+                }
+            ]
+        },
+        "/quiz/": {
+            "get": {
+                "operationId": "quiz_list",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "A search term.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "ordering",
+                        "in": "query",
+                        "description": "Which field to use when ordering the results.",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "min_score",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "min_score__gte",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "min_score__lte",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "max_score",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "max_score__gte",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "max_score__lte",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "A page number within the paginated result set.",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "required": [
+                                "count",
+                                "results"
+                            ],
+                            "type": "object",
+                            "properties": {
+                                "count": {
+                                    "type": "integer"
+                                },
+                                "next": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "previous": {
+                                    "type": "string",
+                                    "format": "uri",
+                                    "x-nullable": true
+                                },
+                                "results": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Quiz"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "quiz"
+                ]
+            },
+            "post": {
+                "operationId": "quiz_create",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Quiz"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Quiz"
+                        }
+                    }
+                },
+                "tags": [
+                    "quiz"
+                ]
+            },
+            "parameters": []
+        },
+        "/quiz/{id}/": {
+            "get": {
+                "operationId": "quiz_read",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Quiz"
+                        }
+                    }
+                },
+                "tags": [
+                    "quiz"
+                ]
+            },
+            "put": {
+                "operationId": "quiz_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Quiz"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Quiz"
+                        }
+                    }
+                },
+                "tags": [
+                    "quiz"
+                ]
+            },
+            "patch": {
+                "operationId": "quiz_partial_update",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Quiz"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/Quiz"
+                        }
+                    }
+                },
+                "tags": [
+                    "quiz"
+                ]
+            },
+            "delete": {
+                "operationId": "quiz_delete",
+                "description": "",
+                "parameters": [],
+                "responses": {
+                    "204": {
+                        "description": ""
+                    }
+                },
+                "tags": [
+                    "quiz"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "A unique integer value identifying this quiz.",
+                    "required": true,
+                    "type": "integer"
+                }
+            ]
+        }
+    },
+    "definitions": {
+        "Assignment": {
+            "required": [
+                "lesson",
+                "title",
+                "description",
+                "deadline"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "lesson": {
+                    "title": "Lesson",
+                    "description": "Related lesson",
+                    "type": "integer"
+                },
+                "title": {
+                    "title": "Title",
+                    "description": "Assignment title",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "description": {
+                    "title": "Description",
+                    "description": "Detailed assignment description",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "deadline": {
+                    "title": "Deadline",
+                    "description": "Submission deadline",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "max_score": {
+                    "title": "Max score",
+                    "description": "Maximum possible score",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                }
+            }
+        },
+        "StudentAssignment": {
+            "required": [
+                "assignment",
+                "student"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "assignment": {
+                    "title": "Assignment",
+                    "description": "Target assignment",
+                    "type": "integer"
+                },
+                "student": {
+                    "title": "Student",
+                    "description": "Student who submitted",
+                    "type": "integer"
+                },
+                "file": {
+                    "title": "File",
+                    "description": "Uploaded submission file",
+                    "type": "string",
+                    "readOnly": true,
+                    "format": "uri"
+                },
+                "student_comment": {
+                    "title": "Student comment",
+                    "description": "Comment from student",
+                    "type": "string",
+                    "x-nullable": true
+                }
+            }
+        },
+        "TeacherAssignmentSub": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "score": {
+                    "title": "Score",
+                    "description": "Score given by teacher",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0,
+                    "x-nullable": true
+                },
+                "teacher_comment": {
+                    "title": "Teacher comment",
+                    "description": "Feedback from teacher",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "is_graded": {
+                    "title": "Is graded",
+                    "description": "Grading status",
+                    "type": "boolean"
+                }
+            }
+        },
+        "ChangePassword": {
+            "required": [
+                "old_password",
+                "new_password",
+                "new_password_confirm"
+            ],
+            "type": "object",
+            "properties": {
+                "old_password": {
+                    "title": "Old password",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "new_password": {
+                    "title": "New password",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "new_password_confirm": {
+                    "title": "New password confirm",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "TokenObtainPair": {
+            "required": [
+                "email",
+                "password"
+            ],
+            "type": "object",
+            "properties": {
+                "email": {
+                    "title": "Email",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "password": {
+                    "title": "Password",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "Logout": {
+            "required": [
+                "refresh"
+            ],
+            "type": "object",
+            "properties": {
+                "refresh": {
+                    "title": "Refresh",
+                    "description": "JWT Refresh токен для внесения в черный список (Blacklist)",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "UserProfile": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "email": {
+                    "title": "Email",
+                    "type": "string",
+                    "format": "email",
+                    "readOnly": true,
+                    "minLength": 1
+                },
+                "first_name": {
+                    "title": "First name",
+                    "type": "string",
+                    "maxLength": 150
+                },
+                "last_name": {
+                    "title": "Last name",
+                    "type": "string",
+                    "maxLength": 150
+                },
+                "address": {
+                    "title": "Address",
+                    "type": "string",
+                    "maxLength": 255,
+                    "x-nullable": true
+                },
+                "birth_date": {
+                    "title": "Birth date",
+                    "type": "string",
+                    "format": "date",
+                    "x-nullable": true
+                },
+                "gender": {
+                    "title": "Gender",
+                    "type": "string",
+                    "enum": [
+                        "UNKNOWN",
+                        "MALE",
+                        "FEMALE"
+                    ]
+                }
+            }
+        },
+        "TokenRefresh": {
+            "required": [
+                "refresh"
+            ],
+            "type": "object",
+            "properties": {
+                "refresh": {
+                    "title": "Refresh",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "access": {
+                    "title": "Access",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                }
+            }
+        },
+        "Register": {
+            "required": [
+                "email",
+                "password",
+                "password_confirm"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "first_name": {
+                    "title": "First name",
+                    "type": "string",
+                    "maxLength": 150
+                },
+                "last_name": {
+                    "title": "Last name",
+                    "type": "string",
+                    "maxLength": 150
+                },
+                "email": {
+                    "title": "Email",
+                    "type": "string",
+                    "format": "email",
+                    "maxLength": 254,
+                    "minLength": 1
+                },
+                "gender": {
+                    "title": "Gender",
+                    "type": "string",
+                    "enum": [
+                        "UNKNOWN",
+                        "MALE",
+                        "FEMALE"
+                    ]
+                },
+                "birth_date": {
+                    "title": "Birth date",
+                    "type": "string",
+                    "format": "date",
+                    "x-nullable": true
+                },
+                "address": {
+                    "title": "Address",
+                    "type": "string",
+                    "maxLength": 255,
+                    "x-nullable": true
+                },
+                "password": {
+                    "title": "Password",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "password_confirm": {
+                    "title": "Password confirm",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "role": {
+                    "title": "Role",
+                    "type": "string",
+                    "enum": [
+                        "SUPER_ADMIN",
+                        "ADMIN",
+                        "TEACHER",
+                        "STUDENT",
+                        "PARENT"
+                    ]
+                }
+            }
+        },
+        "Certificate": {
+            "required": [
+                "student",
+                "course"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "student": {
+                    "title": "Student",
+                    "description": "Certificate owner",
+                    "type": "integer"
+                },
+                "student_fullname": {
+                    "title": "Student fullname",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "course": {
+                    "title": "Course",
+                    "description": "Completed course",
+                    "type": "integer"
+                },
+                "course_title": {
+                    "title": "Course title",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "certificate_number": {
+                    "title": "Certificate number",
+                    "description": "Unique certificate UUID",
+                    "type": "string",
+                    "format": "uuid",
+                    "readOnly": true
+                },
+                "image": {
+                    "title": "Image",
+                    "description": "Изображение сертификата (PNG)",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "format": "uri"
+                },
+                "qr_code": {
+                    "title": "Qr code",
+                    "description": "Verification QR code image",
+                    "type": "string",
+                    "readOnly": true,
+                    "x-nullable": true,
+                    "format": "uri"
+                }
+            }
+        },
+        "Course": {
+            "required": [
+                "title",
+                "description",
+                "category",
+                "price",
+                "duration"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string",
+                    "maxLength": 256,
+                    "minLength": 1
+                },
+                "category": {
+                    "title": "Category",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "level": {
+                    "title": "Level",
+                    "type": "string",
+                    "enum": [
+                        "BEGINNER",
+                        "INTERMEDIATE",
+                        "ADVANCED"
+                    ]
+                },
+                "price": {
+                    "title": "Price",
+                    "type": "string",
+                    "format": "decimal"
+                },
+                "image": {
+                    "title": "Image",
+                    "type": "string",
+                    "readOnly": true,
+                    "format": "uri"
+                },
+                "status": {
+                    "title": "Status",
+                    "type": "string",
+                    "enum": [
+                        "ACTIVE",
+                        "INACTIVE"
+                    ]
+                },
+                "duration": {
+                    "title": "Duration",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "total_lessons": {
+                    "title": "Total lessons",
+                    "type": "string",
+                    "readOnly": true
+                }
+            }
+        },
+        "Lesson": {
+            "required": [
+                "course",
+                "title",
+                "order",
+                "duration"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "course": {
+                    "title": "Course",
+                    "type": "integer"
+                },
+                "course_title": {
+                    "title": "Course title",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "description": {
+                    "title": "Description",
+                    "type": "string"
+                },
+                "title": {
+                    "title": "Title",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "video": {
+                    "title": "Video",
+                    "type": "string",
+                    "readOnly": true,
+                    "format": "uri"
+                },
+                "pdf": {
+                    "title": "Pdf",
+                    "type": "string",
+                    "readOnly": true,
+                    "format": "uri"
+                },
+                "order": {
+                    "title": "Order",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "duration": {
+                    "title": "Duration",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                }
+            }
+        },
+        "Payment": {
+            "required": [
+                "course_id",
+                "method"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "course": {
+                    "title": "Course",
+                    "description": "Target course",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "course_name": {
+                    "title": "Course name",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "course_id": {
+                    "title": "Course id",
+                    "type": "integer"
+                },
+                "student_id": {
+                    "title": "Student id",
+                    "type": "integer",
+                    "x-nullable": true
+                },
+                "student": {
+                    "title": "Student",
+                    "description": "Student making the payment",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "student_full_name": {
+                    "title": "Student full name",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "amount": {
+                    "title": "Amount",
+                    "description": "Payment amount",
+                    "type": "string",
+                    "format": "decimal",
+                    "readOnly": true
+                },
+                "method": {
+                    "title": "Method",
+                    "description": "Payment gateway method",
+                    "type": "string",
+                    "enum": [
+                        "click",
+                        "payme",
+                        "uzum",
+                        "card"
+                    ]
+                },
+                "status": {
+                    "title": "Status",
+                    "description": "Transaction status",
+                    "type": "string",
+                    "enum": [
+                        "pending",
+                        "completed",
+                        "failed"
+                    ],
+                    "readOnly": true
+                },
+                "payment_date": {
+                    "title": "Payment date",
+                    "description": "Successful payment timestamp",
+                    "type": "string",
+                    "format": "date-time",
+                    "readOnly": true,
+                    "x-nullable": true
+                }
+            }
+        },
+        "Question": {
+            "required": [
+                "quiz",
+                "text",
+                "option1",
+                "option2",
+                "option3",
+                "option4",
+                "correct_answer"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "quiz": {
+                    "title": "Quiz",
+                    "description": "Parent quiz",
+                    "type": "integer"
+                },
+                "text": {
+                    "title": "Text",
+                    "description": "Question text",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "marks": {
+                    "title": "Marks",
+                    "description": "Marks for this question",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "option1": {
+                    "title": "Option1",
+                    "description": "First option",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "option2": {
+                    "title": "Option2",
+                    "description": "Second option",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "option3": {
+                    "title": "Option3",
+                    "description": "Third option",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "option4": {
+                    "title": "Option4",
+                    "description": "Fourth option",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "correct_answer": {
+                    "title": "Correct answer",
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "QuizDetail": {
+            "required": [
+                "course",
+                "title",
+                "min_score",
+                "max_score"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "course": {
+                    "title": "Course",
+                    "description": "Related course",
+                    "type": "integer"
+                },
+                "title": {
+                    "title": "Title",
+                    "description": "Quiz name",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "description": {
+                    "title": "Description",
+                    "description": "Quiz description",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "time_limit_mins": {
+                    "title": "Time limit mins",
+                    "description": "Time limit in minutes",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "attempts_count": {
+                    "title": "Attempts count",
+                    "description": "Allowed attempts count",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "min_score": {
+                    "title": "Min score",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "max_score": {
+                    "title": "Max score",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "total_questions": {
+                    "title": "Total questions",
+                    "type": "integer",
+                    "readOnly": true
+                }
+            }
+        },
+        "QuizAttemptResult": {
+            "required": [
+                "started_at"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "quiz_title": {
+                    "title": "Quiz title",
+                    "type": "string",
+                    "readOnly": true,
+                    "minLength": 1
+                },
+                "score": {
+                    "title": "Score",
+                    "description": "Total scored marks",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "min_score": {
+                    "title": "Min score",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "max_score": {
+                    "title": "Max score",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "is_passed": {
+                    "title": "Is passed",
+                    "description": "Passing status",
+                    "type": "boolean"
+                },
+                "started_at": {
+                    "title": "Started at",
+                    "description": "Время начала прохождения теста",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "completed_at": {
+                    "title": "Completed at",
+                    "description": "Время фактического завершения теста",
+                    "type": "string",
+                    "format": "date-time",
+                    "x-nullable": true
+                }
+            }
+        },
+        "QuestionStudent": {
+            "required": [
+                "text",
+                "option1",
+                "option2",
+                "option3",
+                "option4"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "text": {
+                    "title": "Text",
+                    "description": "Question text",
+                    "type": "string",
+                    "minLength": 1
+                },
+                "marks": {
+                    "title": "Marks",
+                    "description": "Marks for this question",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "option1": {
+                    "title": "Option1",
+                    "description": "First option",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "option2": {
+                    "title": "Option2",
+                    "description": "Second option",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "option3": {
+                    "title": "Option3",
+                    "description": "Third option",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "option4": {
+                    "title": "Option4",
+                    "description": "Fourth option",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                }
+            }
+        },
+        "QuizSubmit": {
+            "required": [
+                "answers"
+            ],
+            "type": "object",
+            "properties": {
+                "answers": {
+                    "title": "Answers",
+                    "description": "Формат: {\"<question_id>\": \"option1\", \"<question_id>\": \"option3\"}",
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string",
+                        "maxLength": 255,
+                        "minLength": 1
+                    }
+                }
+            }
+        },
+        "Quiz": {
+            "required": [
+                "course",
+                "title",
+                "min_score",
+                "max_score"
+            ],
+            "type": "object",
+            "properties": {
+                "id": {
+                    "title": "ID",
+                    "type": "integer",
+                    "readOnly": true
+                },
+                "course": {
+                    "title": "Course",
+                    "description": "Related course",
+                    "type": "integer"
+                },
+                "course_name": {
+                    "title": "Course name",
+                    "type": "string",
+                    "readOnly": true
+                },
+                "title": {
+                    "title": "Title",
+                    "description": "Quiz name",
+                    "type": "string",
+                    "maxLength": 255,
+                    "minLength": 1
+                },
+                "description": {
+                    "title": "Description",
+                    "description": "Quiz description",
+                    "type": "string",
+                    "x-nullable": true
+                },
+                "time_limit_mins": {
+                    "title": "Time limit mins",
+                    "description": "Time limit in minutes",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "attempts_count": {
+                    "title": "Attempts count",
+                    "description": "Allowed attempts count",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "min_score": {
+                    "title": "Min score",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "max_score": {
+                    "title": "Max score",
+                    "type": "integer",
+                    "maximum": 9223372036854775807,
+                    "minimum": 0
+                },
+                "total_questions": {
+                    "title": "Total questions",
+                    "type": "string",
+                    "readOnly": true
+                }
+            }
+        }
+    }
+}
