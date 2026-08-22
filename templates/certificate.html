@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сертификат</title>
+    <style>
+        body {
+            margin: 0;
+            background: #1e1e1e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    {% if certificate.image %}
+        <img src="{{ certificate.image.url }}" alt="Сертификат">
+    {% else %}
+        <p style="color: #fff;">Сертификат не найден.</p>
+    {% endif %}
+</body>
+</html>
