@@ -32,8 +32,11 @@ Docker & Docker Compose (recommended)
 Git
 
 Management Commands 
-python manage.py export_users   | IF YOU RUN THIS COMMAND, YOU WILL GET A LIST OF ALL USERS WITH QUANTITY IN A .csv FILE.   path --> userapp/management/commands/export_users.py
-python manage.py export_courses | IF YOU RUN THIS COMMAND, YOU WILL GET A LIST OF ALL COURSES WITH QUANTITY IN A .csv FILE. path --> edumasterapp/management/commands/export_courses.py
+python manage.py export_users   
+IF YOU RUN THIS COMMAND, YOU WILL GET A LIST OF ALL USERS WITH QUANTITY IN A .csv FILE.   path --> userapp/management/commands/export_users.py
+
+python manage.py export_courses
+IF YOU RUN THIS COMMAND, YOU WILL GET A LIST OF ALL COURSES WITH QUANTITY IN A .csv FILE. path --> edumasterapp/management/commands/export_courses.py
 
 
 From this link you can learn how to render ER Diagram  
